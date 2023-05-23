@@ -4,6 +4,7 @@ from library import app, queries, connect
 import mysql.connector
 import re
 import bcrypt
+from datetime import datetime
 
 
 dbconn = None
@@ -112,7 +113,7 @@ def booklist():
               from books;"""
     connection.execute(sql)
     bookList = connection.fetchall()
-    return render_template("booklist.html", booklist = bookList)  
+    return render_template("booklist.html", booklist = bookList, session=session)  
 
 
 # Define a route for public to display details for a book, allow users to see the availability of all copies of a book, whether a copy is on loan and if so, the due date.
@@ -128,7 +129,7 @@ def bookdetail():
            ORDER BY Duedate DESC;"""
     connection.execute(sql, (id,))
     bookDetail = connection.fetchall()
-    return render_template("bookdetail.html", bookdetail = bookDetail)  
+    return render_template("bookdetail.html", bookdetail = bookDetail, session=session)  
     
 
 @app.route('/member')
@@ -139,3 +140,85 @@ def member():
         return render_template('member.html', username=session['username'])
     # User is not loggein redirect to login page
     return redirect(url_for('login'), session=session)
+
+
+@app.route("/searchbooks", methods=["GET","POST"])
+def searchbooks():
+    if request.method == "POST":
+        book = request.form.get('book')
+        connection = getCursor()
+        Title = "%" + book + "%"
+        Author = "%" + book + "%"   # use LIKE operators with % in SQL to support partial text searches.
+        sql = """select bookid, booktitle, author, 
+		        category, yearofpublication 
+                from books
+                WHERE booktitle LIKE %s OR author LIKE %s;""" 
+        connection.execute(sql, (Title, Author))
+        bookList = connection.fetchall()
+        return render_template("booklist.html", booklist = bookList, session=session)
+    return render_template("public.html")
+
+@app.route("/loanlist")
+def loanlist():
+    connection = getCursor()
+    sql=""" SELECT b.booktitle, bc.format, l.bookcopyid
+            FROM bookcopies bc
+            INNER JOIN books b ON bc.bookid = b.bookid
+            INNER JOIN loans l ON bc.bookcopyid = l.bookcopyid
+            WHERE returned <> 1;"""
+    connection.execute(sql)
+    loanlist = connection.fetchall()
+    return render_template("loanlist.html", loanlist = loanlist, session=session)
+
+@app.route("/loanbook")
+def loanbook():
+    todaydate = datetime.now().date()
+    connection = getCursor()
+    # This SQL query allows physical books only be loaned once at a time (are not already on loan), but eBooks and Audio Books can be loaned multiple times (no need to care about on loan status)
+    sql = """ SELECT * FROM bookcopies
+            inner join books on books.bookid = bookcopies.bookid
+            WHERE format = "eBook" or format = "Audio Book" or bookcopyid not in (SELECT bookcopyid from loans where returned <> 1 or returned is NULL);"""
+    connection.execute(sql)
+    bookList = connection.fetchall()
+    return render_template("addloan.html", loandate = todaydate, session=session, books= bookList)
+
+@app.route("/loan/add", methods=["POST"])
+def addloan():
+    bookid = request.form.get('book')
+    loandate = request.form.get('loandate')
+    cur = getCursor()
+    cur.execute("INSERT INTO loans (memberid, bookcopyid, loandate, returned) VALUES(%s,%s,%s,0);",(session['id'], bookid, str(loandate),))
+    return redirect("/loanlist")
+
+
+@app.route("/bookreturn", methods=["GET","POST"])
+def bookreturn():
+    if request.method == "POST":
+        id = request.form.get('loan')
+        cur = getCursor()
+        # set returned equal to 1.
+        sql = "UPDATE loans SET returned=%s WHERE loanid = %s;"
+        parameters = (1, id)
+        cur.execute(sql,parameters)
+        return redirect("/loanlist")
+    connection = getCursor()
+    sql = """ SELECT l.loanid, bc.bookcopyid, bc.format, b.booktitle
+            FROM loans l
+            JOIN bookcopies bc ON bc.bookcopyid=l.bookcopyid
+            JOIN books b ON bc.bookid=b.bookid
+            WHERE returned <> 1 and l.memberid=%s;"""
+    connection.execute(sql, (session['id'], ))
+    bookLoans = connection.fetchall()
+    return render_template("returnbook.html",loans = bookLoans)
+
+
+@app.route("/book/return")
+def returnloan():
+    id = request.args.get('id')
+    print(id)
+    cur = getCursor()
+    # set returned equal to 1.
+    sql = "UPDATE loans SET returned=%s WHERE loanid = %s;"
+    parameters = (1, id)
+    cur.execute(sql,parameters)
+    return redirect("/loanlist")

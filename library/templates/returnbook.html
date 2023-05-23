@@ -1,0 +1,26 @@
+{% extends "member.html" %}
+
+{% block content %}
+
+<form style="width:400px;margin:40px auto;" method="POST" action="/bookreturn">
+
+    <!-- Add a drop down box of loans--> 
+    <select name="loan" class="form-select form-select-lg mb-3" required>
+        <option value="" selected>Select a book on loan</option>
+        {% for loan in loans %}
+        
+            {% set bookcopyid = loan[1] | string() %}
+          
+            {% set booktitle = loan[2] %}
+            {% set format =loan[3] %}
+            {% set name ="ID "+bookcopyid+": "+format+ " ---- "+booktitle %}
+            <option value="{{loan[0]}}">{{name}}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Add an input type submit-->
+    <button type="submit" class="btn btn-search">Submit</button>
+</form>
+
+
+{% endblock %}

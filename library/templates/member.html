@@ -6,7 +6,7 @@
 {% block navbar %} 
 <!-- Nav Bar -->
 <nav class="navbar navbar-dark navbar-expand-lg"> 
-    <a class="navbar-brand" href="{{ url_for('home') }}"><i class="fa-solid fa-book-open-reader"></i> Public Library</a>
+    <a class="navbar-brand" href="{{ url_for('member') }}">Public Library</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>    
@@ -16,10 +16,20 @@
             <input class="search-book-input form-control me-2" type="search" name="book" placeholder="Search Books" aria-label="Search">
             <button class="btn btn-search" type="submit">search</button>
         </form>
-      <li>
-         <a class="nav-link hover" aria-current="page" href="{{ url_for('booklist') }}">Book List</a></li>
-      <li class="nav-item">
-         <a class="nav-link hover" aria-current="page" href="{{ url_for('login') }}">Login</a></li>
+        <li class="nav-item">
+            <a class="nav-link hover" aria-current="page" href="{{ url_for('booklist') }}">Book List</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Book
+            </a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('loanbook') }}">Add Loan</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('bookreturn') }}">Return books</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('loanlist') }}">Loan List</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link hover" aria-current="page" href="{{ url_for('logout') }}">Logout</a></li>
     </ul>
     
    </div>

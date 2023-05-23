@@ -1,0 +1,26 @@
+{% extends "member.html" %}
+
+{% block content %}
+
+<form style="width:400px;margin:40px auto;" method="POST" action="/loan/add">
+
+    <!-- Add a dropdown of available book copies-->
+    <select name="book" class="form-select form-select-lg mb-3" required>
+        <option value="" selected>Select a book</option>
+        {% for book in books %}
+            {% set bookcopyid = book[0] | string() %}
+            {% set booktitle = book[4] %}
+            {% set format =book[2] %}
+            {% set bookformat= "ID "+bookcopyid+": "+format+" ---- "+booktitle %}               
+            <option value="{{book[0]}}">{{ bookformat }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Add a hidden input field set to the current date-->
+    <input type="hidden" id="loandate" name="loandate" value={{loandate}}>
+
+    <!-- Add an input type submit-->
+    <button type="submit" class="btn btn-search">Submit</button>
+</form>
+
+{% endblock %}

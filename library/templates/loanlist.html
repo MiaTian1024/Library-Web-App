@@ -1,8 +1,4 @@
-{% if session %}
 {% extends "member.html" %}
-{% else %}
-{% extends "public.html" %}
-{% endif %}
 
 {% block content %}
 <!-- code in here to display a list of books-->
@@ -14,15 +10,15 @@
        <table class="table table-sm table-hover table-striped table-bordered">    
        <caption style="caption-side: top; color:#354f52;">Click detail for more information</caption>
         <tr>
-            <th>Book Title</th><th>Author</th>
-            <th>Category</th><th>Year of Publication</th><th>Detail</th>
+            <th>Bookcopy ID</th><th>Book Title</th><th>Format</th>
+            <th>Action</th>
         </tr>
-    {% for book in booklist %}
+    {% for loan in loanlist %}
         <tr>            
-            <td>{{book[1]}}</td><td>{{book[2]}}</td><td>{{book[3]}}</td><td>{{book[4]}}</td>
+            <td>{{loan[2]}}</td><td>{{loan[0]}}</td><td>{{loan[1]}}</td>
             <td>
                 <!-- Add a link to catch a bookid, then pass the id to bookdetail route which will display bookdetails for this chosen book-->
-                <a class="btn btn-detail btn-sm" href="/bookdetail?id={{book[0]}}" role="button">Detail</a>
+                <a class="btn btn-detail btn-sm" href="/book/return?id={{loan[2]}}" role="button">Return</a>
                 
             </td>
         </tr>
@@ -31,3 +27,4 @@
 </div>
 </div>
 {% endblock %}
+

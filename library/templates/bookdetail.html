@@ -1,4 +1,8 @@
+{% if session %}
+{% extends "member.html" %}
+{% else %}
 {% extends "public.html" %}
+{% endif %}
 
 {% block content %}
 <!-- code in here to display information of bookdetails, including book format, status and duedate-->
