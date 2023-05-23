@@ -9,6 +9,9 @@ import bcrypt
 dbconn = None
 connection = None
 
+# Change this to your secret key (can be anything, it's for extra protection)
+app.secret_key = 'your_secret_key'
+
 def getCursor():
     global dbconn
     global connection
@@ -135,4 +138,4 @@ def member():
         # User is loggedin show them the member page
         return render_template('member.html', username=session['username'])
     # User is not loggein redirect to login page
-    return redirect(url_for('login'))
+    return redirect(url_for('login'), session=session)

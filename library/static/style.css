@@ -90,17 +90,18 @@ body {
 /* login register */
 .login, .register {
     width: 400px;
-    background-color: #ffffff;
+    background-color: #F7F6F2;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
+    border-radius: 5px;
 }
 
 .login h1, .register h1 {
     text-align: center;
-    color: #5b6574;
+    color: #4B6587;
     font-size: 24px;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid #dee0e4;
+    border-bottom: 1px solid #e4e2d9;
 }
 .login .links, .register .links {
     display: flex;
@@ -118,8 +119,8 @@ body {
     color: #9da3ac;
 }
 .login .links a.active, .register .links a.active {
-    border-bottom: 3px solid #3274d6;
-    color: #3274d6;
+    border-bottom: 3px solid #4B6587;
+    color: #4B6587;
 }
 .login form, .register form {
     display: flex;
@@ -133,7 +134,7 @@ body {
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #3274d6;
+    background-color: #4B6587;
     color: #ffffff;
 }
 
@@ -148,16 +149,16 @@ body {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
-    background-color: #3274d6;
+    background-color: #4B6587;
     border: 0;
     cursor: pointer;
     font-weight: bold;
     color: #ffffff;
-    transition: background-color 0.2s;
+    transition: background-color 0.1s;
 }
 .login form input[type="submit"]:hover, .register form input[type="submit"]:hover {
-    background-color: #2868c7;
-    transition: background-color 0.2s;
+    background-color: #4B6587;
+    transition: background-color 0.1s;
 }
 
 
@@ -308,8 +309,3 @@ body {
     background-color:#b2b8ba
   }
 
-/* Footer Section */
-
-.social-icon {
-    margin:20px 10px;
-}
