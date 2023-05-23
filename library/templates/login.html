@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard </title>
-</head>
+{% extends "public.html" %}
 
-<body>
-    <h1>login</h1>
-</body>
+{% block content %}
 
-</html>
+<div class="login">
+    <h1>Login</h1>
+    <div class="links">
+        <a href="{{ url_for('login') }}" class="active">Login</a>
+        <a href="#">Register</a>
+    </div>
+    <form action="{{ url_for('login') }}" method="post">
+        <label for="username">
+            
+        </label>
+        <input type="text" name="username" placeholder="Username" id="username" required>
+        <label for="password">
+           
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <div class="msg"></div>
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,256 @@
+body {
+    text-align: center;
+    background-color: #C8C6C6;
+    height:100vh;
+    margin:0;
+}
+/* Container */
+
+.container-fluid{
+    padding:5% 5% 1% 5%;
+}
+
+
+/* Nav Bar */
+
+.navbar-brand{
+    font-family: "Ubuntu";
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4B6587;
+}
+
+.nav-item {
+    padding:0 18px;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-family: 'Montserrat-Light', sans-serif;
+    color: #4B6587;
+}
+
+.form-container{
+    justify-content:center;
+    height:328px;
+    width:60%;
+    margin:50px auto;
+    background-color: #4B6587;
+    border-radius: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    align-items:center;
+}
+
+.table-container{
+    justify-content:center;
+    margin:50px auto;
+    background-color: #F7F6F2;
+    border-radius:20px;
+    text-align: left;
+    align-items:center;
+    padding:3%;
+}
+.search-book{
+    width:400px;
+    position:absolute;
+    margin-left:5%;
+    margin-right:10px;
+    
+}
+
+.search-book-input{
+    width:300px;
+    border-radius:24px;
+    background-color: #F7F6F2;
+}
+
+.btn-search{
+    background-color:#F7F6F2; 
+    color:#4B6587;
+    border: 1px solif #F7F6F2; 
+    border-radius:24px;
+}
+
+.btn-search:hover{
+    background-color: #4B6587;
+    color:#F7F6F2; 
+}
+
+.btn-detail{
+    width:68px;
+    height:30px;
+    background-color: #4B6587;
+    color:#F7F6F2;
+    border: 1px solid #4B6587;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-detail:hover{
+    background-color: #F7F6F2;
+    color:#4B6587;
+    border: 1px solid #4B6587;
+}
+
+/* login register */
+.login, .register {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+}
+
+/* Book detial */
+
+.container-card{
+    border-radius: 24px;
+}
+.detail-card{
+    margin:50px auto;
+}
+
+.detail-title{
+    background-color: #4B6587;  
+}
+.card-book-title{
+    color:#C8C6C6;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-book-text{
+    color:#C8C6C6;
+    font-size: 1rem;
+
+}
+
+.empty-card{
+    margin:0;
+    padding:2%;
+}
+
+.detail-info{
+    background-color: #F7F6F2;
+    padding-top:30px;
+}
+
+.detail-image{
+    width:400px;
+    padding:15% 10% 5% 10%;
+}
+
+
+/* login */
+
+.login-bar{
+    width:400px;
+    position:absolute;
+    left:60%;
+}
+
+.login-input{
+    width:300px;
+    border-radius:24px;
+    background-color: #F7F6F2;
+}
+
+/* borrower list */
+
+.borrower-search{
+    margin-top:2.5%;
+    margin-left:2%;
+}
+
+.search-fail{
+    width:90%;
+    margin:3% auto;
+    background-color:#F7F6F2;
+    font-size:20px;
+    text-align: center;
+    color: #4B6587;
+    font-weight: bold;
+  }
+  
+.borrower-table-container{
+    justify-content:center;
+    margin:-10px auto;
+    background-color: #F7F6F2;
+    border-radius:20px;
+    text-align: left;
+    align-items:center;
+    padding:3%;
+}
+
+.borrower-table{
+    justify-content:center;
+    margin:2px auto;
+}
+
+.reusableContainer{
+    justify-content: center;
+    height:328px;
+    width:60%;
+    margin:50px auto;
+    background-color: #4B6587;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    align-items: center;
+  
+   }
+  
+.reusable-form-input{border-radius: 24px;
+    border-style: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 8px;
+    padding-left:30px;
+    background-color: #F7F6F2;}
+  
+  .reusable-form-label{ 
+    font-size:20px;
+    text-align: left;
+    color:#F7F6F2;
+  }
+
+  .reusableButton{width: 98px;
+    height: 30px;
+    border-radius: 24px;
+    background-color: #D9AD3C;
+    color: #FFFFFF;
+    border-style: none;
+    text-align: center;
+  }
+  
+  .back-button{
+    position:absolute;
+    margin-left:5%;
+    margin-top:-20px;
+    
+  }
+  
+  .button-back{
+    width: 90px;
+    height: 35px;
+    border-radius: 12px;
+    background-color:#4B6587;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    color:#f1f1f1;
+    margin-right:2px;
+    
+    
+  }
+  
+  .button-back:hover {
+    background-color:#b2b8ba
+  }
+
+/* Footer Section */
+
+.social-icon {
+    margin:20px 10px;
+}

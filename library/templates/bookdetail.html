@@ -1,0 +1,60 @@
+{% extends "public.html" %}
+
+{% block content %}
+<!-- code in here to display information of bookdetails, including book format, status and duedate-->
+<!-- bookdetail is the variable passed in containing list of books -->
+<!-- Define a table to list bookdetails -->
+
+<div class="container-fluid">
+<div class="detail-card card mb-3" style="max-width: 840px;">
+    <div class="row g-0">    
+      <div class="detail-title col-md-4">
+        <img src="/static/storytelling.png" class="detail-image img-fluid" alt="book icon">
+        {% set currentbook = namespace(id =0) %}
+        {% for book in bookdetail %}
+        {% if currentbook.id != book[0] %} 
+        <h5 class="card-book-title">{{book[0]}}</h5>
+        <p class="card-book-text">{{book[1]}}</p> 
+        {% set currentbook.id = book[0] %} 
+        {% else %} 
+        <div class="empty-card"></div>
+        {% endif %}   
+        {% endfor %}
+    </div>
+    
+
+      <div class="detail-info col-md-8">
+        <div class="card-body">
+        <h5 class="card-title">Bookcopy Information</h5>
+        <table class="table table-profile table-sm table-bordered">
+          <tr>
+            <th>Bookcopy ID</th><th>Format</th><th>Status</th><th>Duedate</th>
+          </tr>
+          {% for book in bookdetail %}
+          <tr>  
+            <td><p class="card-text">{{book[2]}}</p></td>
+            <td><p class="card-text">{{book[3]}}</p></td>
+            {% if book[4] == 1 %}
+            <td><p class="card-text">Returned</p></td>
+            {% elif book[4] == 0 %}
+            <td><p class="card-text">On Loan</p></td>
+            {% else %}
+            <td><p class="card-text"></p></td>
+            {% endif %}
+
+            {% if book[5] == None %}
+            <td><p class="card-text"></p></td>
+            {% else %}
+            <td><p class="card-text">{{book[5]}}</p></td>
+            {% endif %} 
+
+          </tr>
+          {% endfor%}
+        </table>
+
+    
+      </div> 
+
+</div>
+</div>
+{% endblock %}
