@@ -1,5 +1,5 @@
-INSERT INTO role (name, description) VALUES
-('Admin', 'Manager, Receptionist and General Administration staff'),
-('Member', 'All registed members'),
-('Public', 'Public users')
-;
+
+
+INSERT INTO books VALUES(56,'Harry Potter and the Order of the Phoenix','J. K. Rowling','Fiction',2011,"Dark times have come to Hogwarts. After the Dementors' attack on his cousin Dudley, Harry Potter knows that Voldemort will stop at nothing to find him. There are many who deny the Dark Lord's return, but Harry is not alone: a secret order gathers at Grimmauld Place to fight against the Dark forces. Harry must allow Professor Snape to teach him how to protect himself from Voldemort's savage assaults on his mind. But they are growing stronger by the day and Harry is running out of time ...");
+INSERT INTO books VALUES(34,'The Wind in the Willows','Kenneth Grahame ','Fiction',1908, "The Wind in the Willows is a children's novel by Kenneth Grahame, first published in England in 1908. The story focuses on four anthropomorphized animals in a pastoral version of Edwardian England. The novel is notable for its mixture of mysticism, adventure, morality and camaraderie, and celebrated for its evocation of the nature of the Thames Valley. It is a delightful and captivating tale that is sure to delight.");
+INSERT INTO books VALUES(7455, 'Python Crash Course', 'Eric Matthes', 'Non-Fiction', 2019, "A fast-paced, no-nonsense, updated guide to programming in Python.");
