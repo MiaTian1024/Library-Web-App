@@ -2,28 +2,14 @@ drop database library_management;
 create database if not exists library_management;
 use library_management;
 
--- 1. Role table
-CREATE TABLE `role` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
-  `description` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
--- 2. Member table
+-- 1. Member table
 CREATE TABLE `member` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `role_id` INT,
-  `firstname` varchar(45) NOT NULL,
-  `familyname` varchar(45) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
+  `username` varchar(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `gender` ENUM('Male', 'Female', 'Other') NOT NULL,
-  `dateofbirth` date DEFAULT NULL,
-  `phone_number` VARCHAR(20) NOT NULL,
-  `address` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`role_id`) REFERENCES role (`id`)
 );
 
 -- 3. Admin table

@@ -12,26 +12,20 @@
     </button>    
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ms-auto">
+        <form class="d-flex nav-link hover" role="search" action="/searchbooks" method="POST">
+            <input class="search-book-input form-control me-2" type="search" name="book" placeholder="Search Books" aria-label="Search">
+            <button class="btn btn-search" type="submit">search</button>
+        </form>
       <li>
          <a class="nav-link hover" aria-current="page" href="{{ url_for('booklist') }}">Book List</a></li>
       <li class="nav-item">
-         <a class="nav-link hover" aria-current="page" href="{{ url_for('home') }}">Login</a></li>
+         <a class="nav-link hover" aria-current="page" href="{{ url_for('login') }}">Login</a></li>
     </ul>
-    </div>
+    
+   </div>
 </nav>
 {% endblock %}
 
-
-{% block header %}
- <!-- Search Bar -->
- <div class="search-book">
-    <form class="d-flex nav-link hover" role="search" action="/searchbooks" method="POST">
-        <input class="search-book-input form-control me-2" type="search" name="book" placeholder="Search Books" aria-label="Search">
-        <button class="btn btn-search" type="submit"></button>
-      </form>
-    </div>
-
-{% endblock %}
    
 {% block content %}
 
