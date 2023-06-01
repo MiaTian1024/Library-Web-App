@@ -1,1 +1,2 @@
 # Library-Web-App
+Used MySQL to build a database for a library management system, with two distinct interfaces. Implemented a public interface that allows users to view and search for books in the library’s collection. Developed member interface, accessible through a login page requiring email and password verification. Built borrower management, loan, and return book functions using Python, HTML, JavaScript, and Flask. Used Bootstrap and CSS to style the website, creating an intuitive and user-friendly interface for all users. 
