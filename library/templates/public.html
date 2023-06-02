@@ -13,8 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ms-auto">
         <form class="d-flex nav-link hover" role="search" action="/searchbooks" method="POST">
-            <input class="search-book-input form-control me-2" type="search" name="book" placeholder="Search Books" aria-label="Search">
-            <button class="btn btn-search" type="submit">search</button>
+            <input class="search-book-input form-control me-2" type="text" onchange="handleChange(event)" name="book" placeholder="Search Books" aria-label="Search">
         </form>
       <li>
          <a class="nav-link hover" aria-current="page" href="{{ url_for('booklist') }}">Book List</a></li>
@@ -24,6 +23,14 @@
     
    </div>
 </nav>
+
+<script>
+    function handleChange(event) {
+      const newValue = event.target.value;
+
+    }
+  </script>
+
 {% endblock %}
 
    
