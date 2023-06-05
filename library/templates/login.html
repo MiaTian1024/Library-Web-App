@@ -10,11 +10,11 @@
 			</div>
 			<form action="{{ url_for('login') }}" method="post">
 				<label for="username">
-					<img src="/static/user.png" alt="user icon" style="width:35px;">
+					<i class='bx bxs-user'></i>
 				</label>
 				<input type="text" name="username" placeholder="Username" id="username" required>
 				<label for="password">
-					<img src="/static/padlock.png" alt="password icon" style="width:35px;">
+					<i class='bx bxs-key'></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
 				<div class="msg">{{ msg }}</div>

@@ -10,15 +10,15 @@
     </div>
     <form action="{{ url_for('register') }}" method="post" autocomplete="off">
         <label for="username">
-            Username
+            <i class='bx bxs-user'></i>
         </label>
         <input type="text" name="username" placeholder="Username" id="username" required>
         <label for="password">
-            Password
+            <i class='bx bxs-key'></i>
         </label>
         <input type="password" name="password" placeholder="Password" id="password" required>
         <label for="email">
-            Email
+            <i class='bx bxs-envelope'></i>
         </label>
         <input type="email" name="email" placeholder="Email" id="email" required>
         <div class="msg">{{ msg }}</div>
